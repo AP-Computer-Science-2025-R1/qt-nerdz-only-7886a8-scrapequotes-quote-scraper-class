@@ -92,3 +92,4 @@ from bs4 import BeautifulSoup
 # Team Lead/Integrator: Write the main logic here that calls the functions.
 if __name__ == "__main__":
 	print("this is a test")
+	print()
