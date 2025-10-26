@@ -42,6 +42,18 @@ from bs4 import BeautifulSoup
 # TODO: Put your group_introductions() function here.
 # This function should print an introduction of the group, and ask the user for inputting the date.
 # It should return the name of our group members and an input asking for the user to input the date.
+def group_introductions():
+	print("Group members and their roles")
+	print("   ")
+	print("Akib - group_introductions")
+	print("Alvin - scrape_all_quotes")
+	print("Pearl - scrape_all_quotes")
+	print("Svitozar - save_quotes_to_disk")
+	print("David - load_quotes_from_disk")
+	print("Ronny - get_random_quote")
+	print("   ")
+	date = input("Please enter today's date (in YYYY-MM-DD): ")
+	print("Today's date is:", date) 
 
 # --- Function for Alvin and Pearl ---
 # TODO: Put your scrape_all_quotes function here.
