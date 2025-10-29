@@ -4,7 +4,6 @@
 # Team: Silliness
 # Members: Arshia, Pearl, Alvin, David, Svitozar (Ed), Ronny, Akib
 
-#hllo
 # ==================================
 
 single_quote = {
@@ -52,6 +51,8 @@ from bs4 import BeautifulSoup
 
 
 # --- Function for Svitozar (Ed) ---
+def save_qoutes_to_disk():
+	
 # TODO: Put your save_quotes_to_disk function here.
 # This function should take the list of quotes and a filename.
 # It should save the quotes to a JSON or CSV file.
