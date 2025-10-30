@@ -94,8 +94,18 @@ if __name__ == "__main__":
 # --- Function for Svitozar (Ed) ---
 def save_qoutes_to_disk(data):
 	# Convert the data to a JSON string
-	data_as_a_file = json.dumps(data, indent=4)
-	return data_as_a_file
+    import datetime
+    timestamp_for_filename = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")  
+    file_name = f"data_{timestamp_for_filename}.json"
+    try:
+        with open(filename, 'w') as outfile:
+           data_as_a_file = json.dump(data, outfile, indent=4) # indent for pretty printing
+           return data_as_a_file
+    except IOError as e:
+        print(f"Error saving JSON data: {e}")
+  
+      
+    return data_as_a_file
 # TODO: Put your save_quotes_to_disk function here.
 # This function should take the list of quotes and a filename.
 # It should save the quotes to a JSON or CSV file.
