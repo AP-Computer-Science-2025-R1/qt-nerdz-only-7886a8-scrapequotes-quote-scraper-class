@@ -98,7 +98,7 @@ def save_qoutes_to_disk(data):
     timestamp_for_filename = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")  
     file_name = f"data_{timestamp_for_filename}.json"
     try:
-        with open(filename, 'w') as outfile:
+        with open(file_name, 'w') as outfile:
            data_as_a_file = json.dump(data, outfile, indent=4) # indent for pretty printing
            return data_as_a_file
     except IOError as e:
