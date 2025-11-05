@@ -1,0 +1,31 @@
+name: Autograding Tests
+'on':
+- workflow_dispatch
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Test save_quotes_to_disk() - 5 points
+      id: test-save_quotes_to_disk-5-points
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Test save_quotes_to_disk() - 5 points
+        setup-command: ''
+        command: '# Bash/RegEx approach grep -q "def save_quotes_to_disk" *.py &&
+          echo "PASS: Function exists" || echo "FAIL: Function not found"'
+        timeout: 10
+        max-score: 5
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        TEST-SAVE_QUOTES_TO_DISK-5-POINTS_RESULTS: "${{steps.test-save_quotes_to_disk-5-points.outputs.result}}"
+      with:
+        runners: test-save_quotes_to_disk-5-points
