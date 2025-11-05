@@ -23,9 +23,61 @@ jobs:
           echo "PASS: Function exists" || echo "FAIL: Function not found"'
         timeout: 10
         max-score: 5
+    - name: Test scrape_all_quotes() - 10 points
+      id: test-scrape_all_quotes-10-points
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Test scrape_all_quotes() - 10 points
+        setup-command: ''
+        command: '# Bash/RegEx approach grep -q "def scrape_all_quotes" *.py && echo
+          "PASS: Function exists" || echo "FAIL: Function not found"'
+        timeout: 10
+        max-score: 10
+    - name: Test load_quotes_from_disk() - 5 points
+      id: test-load_quotes_from_disk-5-points
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Test load_quotes_from_disk() - 5 points
+        setup-command: ''
+        command: '# Bash/RegEx approach grep -q "def load_quotes_from_disk" *.py &&
+          echo "PASS: Function exists" || echo "FAIL: Function not found"'
+        timeout: 10
+        max-score: 5
+    - name: Test get_random_quote() - 5 points
+      id: test-get_random_quote-5-points
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Test get_random_quote() - 5 points
+        setup-command: ''
+        command: '# Bash/RegEx approach grep -q "def get_random_quote" *.py && echo
+          "PASS: Function exists" || echo "FAIL: Function not found"'
+        timeout: 10
+        max-score: 5
+    - name: Test group_introductions() - 5 points
+      id: test-group_introductions-5-points
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Test group_introductions() - 5 points
+        setup-command: ''
+        command: '# Bash/RegEx approach grep -q "def group_introductions" *.py &&
+          echo "PASS: Function exists" || echo "FAIL: Function not found"'
+        timeout: 10
+        max-score: 5
+    - name: Code Quality - 10 points
+      id: code-quality-10-points
+      uses: classroom-resources/autograding-python-grader@v1
+      with:
+        timeout: 10
+        max-score: 10
+        setup-command: ''
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
         TEST-SAVE_QUOTES_TO_DISK-5-POINTS_RESULTS: "${{steps.test-save_quotes_to_disk-5-points.outputs.result}}"
+        TEST-SCRAPE_ALL_QUOTES-10-POINTS_RESULTS: "${{steps.test-scrape_all_quotes-10-points.outputs.result}}"
+        TEST-LOAD_QUOTES_FROM_DISK-5-POINTS_RESULTS: "${{steps.test-load_quotes_from_disk-5-points.outputs.result}}"
+        TEST-GET_RANDOM_QUOTE-5-POINTS_RESULTS: "${{steps.test-get_random_quote-5-points.outputs.result}}"
+        TEST-GROUP_INTRODUCTIONS-5-POINTS_RESULTS: "${{steps.test-group_introductions-5-points.outputs.result}}"
+        CODE-QUALITY-10-POINTS_RESULTS: "${{steps.code-quality-10-points.outputs.result}}"
       with:
-        runners: test-save_quotes_to_disk-5-points
+        runners: test-save_quotes_to_disk-5-points,test-scrape_all_quotes-10-points,test-load_quotes_from_disk-5-points,test-get_random_quote-5-points,test-group_introductions-5-points,code-quality-10-points
